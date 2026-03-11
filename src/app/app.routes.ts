@@ -8,11 +8,7 @@ export const routes: Routes = [
   },
   {
     path: 'rooms',
-    loadComponent: () =>
-      import('./shared/components/not-implemented/not-implemented.component').then(
-        (m) => m.NotImplementedComponent,
-      ),
-    data: { label: 'Rooms' },
+    loadComponent: () => import('./features/rooms/rooms.component').then((m) => m.RoomsComponent),
   },
   {
     path: 'alerts',

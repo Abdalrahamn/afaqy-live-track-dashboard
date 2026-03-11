@@ -8,16 +8,16 @@
     <div
       class="flex flex-col gap-1 p-4 bg-slate-50 rounded-xl border border-black/5 hover:bg-slate-100/80 transition-colors duration-150"
     >
-      <span class="text-[10.5px] text-slate-400 uppercase tracking-widest font-semibold"
+      <span class="text-[0.65625rem] text-slate-400 uppercase tracking-widest font-semibold"
         >Floor</span
       >
-      <span class="text-[15px] font-semibold text-slate-900">{{ data.room.floor }}</span>
+      <span class="text-[0.9375rem] font-semibold text-slate-900">{{ data.room.floor }}</span>
     </div>
 
     <div
       class="flex flex-col gap-1 p-4 bg-slate-50 rounded-xl border border-black/5 hover:bg-slate-100/80 transition-colors duration-150"
     >
-      <span class="text-[10.5px] text-slate-400 uppercase tracking-widest font-semibold"
+      <span class="text-[0.65625rem] text-slate-400 uppercase tracking-widest font-semibold"
         >Status</span
       >
       <mat-chip
@@ -34,19 +34,19 @@
     <div
       class="flex flex-col gap-1 p-4 bg-slate-50 rounded-xl border border-black/5 hover:bg-slate-100/80 transition-colors duration-150"
     >
-      <span class="text-[10.5px] text-slate-400 uppercase tracking-widest font-semibold"
+      <span class="text-[0.65625rem] text-slate-400 uppercase tracking-widest font-semibold"
         >Chart</span
       >
-      <span class="text-[15px] font-semibold text-slate-900">{{ data.chart.name }}</span>
+      <span class="text-[0.9375rem] font-semibold text-slate-900">{{ data.chart.name }}</span>
     </div>
 
     <div
       class="flex flex-col gap-1 p-4 bg-slate-50 rounded-xl border border-black/5 hover:bg-slate-100/80 transition-colors duration-150"
     >
-      <span class="text-[10.5px] text-slate-400 uppercase tracking-widest font-semibold"
+      <span class="text-[0.65625rem] text-slate-400 uppercase tracking-widest font-semibold"
         >Sensor Type</span
       >
-      <span class="text-[15px] font-semibold text-slate-900">{{
+      <span class="text-[0.9375rem] font-semibold text-slate-900">{{
         data.chart.sensorType | titlecase
       }}</span>
     </div>
@@ -54,7 +54,7 @@
     <div
       class="flex flex-col gap-1 p-4 bg-slate-50 rounded-xl border border-black/5 hover:bg-slate-100/80 transition-colors duration-150"
     >
-      <span class="text-[10.5px] text-slate-400 uppercase tracking-widest font-semibold"
+      <span class="text-[0.65625rem] text-slate-400 uppercase tracking-widest font-semibold"
         >Current Reading</span
       >
       <span
@@ -72,7 +72,7 @@
     <div
       class="flex flex-col gap-1 p-4 bg-slate-50 rounded-xl border border-black/5 hover:bg-slate-100/80 transition-colors duration-150"
     >
-      <span class="text-[10.5px] text-slate-400 uppercase tracking-widest font-semibold"
+      <span class="text-[0.65625rem] text-slate-400 uppercase tracking-widest font-semibold"
         >Range Assignment</span
       >
       @if (data.range) {
@@ -80,7 +80,7 @@
           {{ data.range.name }}
         </mat-chip>
       } @else {
-        <span class="text-[15px] text-slate-400 font-medium">Out of range</span>
+        <span class="text-[0.9375rem] text-slate-400 font-medium">Out of range</span>
       }
     </div>
   </div>
@@ -89,16 +89,16 @@
     <div
       class="flex gap-4 items-center mb-6 py-4 px-6 bg-violet-50 rounded-xl border border-indigo-500/8"
     >
-      <span class="text-[10.5px] text-slate-600 uppercase font-semibold tracking-widest"
+      <span class="text-[0.65625rem] text-slate-600 uppercase font-semibold tracking-widest"
         >Range Bounds</span
       >
-      <span class="font-bold text-indigo-500 text-[15px]"
+      <span class="font-bold text-indigo-500 text-[0.9375rem]"
         >{{ data.range.from }} – {{ data.range.to }}</span
       >
     </div>
   }
 
-  <h3 class="text-[13px] font-bold mt-6 mb-4 text-slate-600 tracking-wide uppercase">
+  <h3 class="text-[0.8125rem] font-bold mt-6 mb-4 text-slate-600 tracking-wide uppercase">
     All Sensors
   </h3>
   <div class="flex flex-col gap-2">
@@ -106,10 +106,10 @@
       <div
         class="flex justify-between items-center py-4 px-6 bg-slate-50 rounded-xl border border-black/5 hover:bg-slate-100/80 hover:border-indigo-500/10 hover:translate-x-0.5 transition-all duration-150"
       >
-        <span class="font-semibold text-[13.5px] text-slate-900">{{
+        <span class="font-semibold text-[0.84375rem] text-slate-900">{{
           sensor.type | titlecase
         }}</span>
-        <span class="text-indigo-500 font-bold text-[15px] tracking-tight"
+        <span class="text-indigo-500 font-bold text-[0.9375rem] tracking-tight"
           >{{ sensor.value }} {{ sensor.unit }}</span
         >
       </div>

@@ -1,4 +1,4 @@
-<div class="flex flex-col max-h-[85vh]">
+<div class="flex flex-col h-full">
   @if (chart(); as c) {
     <!-- Header -->
     <div class="flex items-start justify-between px-6 pt-6 pb-4">
@@ -18,7 +18,7 @@
       </div>
       <div class="flex items-center gap-3">
         <span
-          class="inline-flex items-center px-2.5 py-1 bg-green-50 text-green-600 text-[11px] font-semibold rounded-full"
+          class="inline-flex items-center px-2.5 py-1 bg-green-50 text-green-600 text-[0.6875rem] font-semibold rounded-full"
           >Live</span
         >
         <button
@@ -59,7 +59,7 @@
     <div class="flex-1 overflow-y-auto px-6">
       @if (filteredRows().length === 0) {
         <div class="flex flex-col items-center justify-center p-12 text-slate-400 gap-4">
-          <mat-icon class="text-[52px]! h-13! w-13! opacity-30">info</mat-icon>
+          <mat-icon class="text-[3.25rem]! h-13! w-13! opacity-30">info</mat-icon>
           <p class="text-sm font-medium m-0">No rooms match your search.</p>
         </div>
       } @else {
@@ -67,32 +67,32 @@
           <thead>
             <tr class="border-b border-slate-200">
               <th
-                class="text-left py-3 px-4 text-[10px] font-semibold text-slate-400 uppercase tracking-wider"
+                class="text-left py-3 px-4 text-[0.625rem] font-semibold text-slate-400 uppercase tracking-wider"
               >
                 Room
               </th>
               <th
-                class="text-left py-3 px-4 text-[10px] font-semibold text-slate-400 uppercase tracking-wider"
+                class="text-left py-3 px-4 text-[0.625rem] font-semibold text-slate-400 uppercase tracking-wider"
               >
                 Current Reading
               </th>
               <th
-                class="text-left py-3 px-4 text-[10px] font-semibold text-slate-400 uppercase tracking-wider"
+                class="text-left py-3 px-4 text-[0.625rem] font-semibold text-slate-400 uppercase tracking-wider"
               >
                 Range
               </th>
               <th
-                class="text-left py-3 px-4 text-[10px] font-semibold text-slate-400 uppercase tracking-wider"
+                class="text-left py-3 px-4 text-[0.625rem] font-semibold text-slate-400 uppercase tracking-wider"
               >
                 Trend
               </th>
               <th
-                class="text-left py-3 px-4 text-[10px] font-semibold text-slate-400 uppercase tracking-wider"
+                class="text-left py-3 px-4 text-[0.625rem] font-semibold text-slate-400 uppercase tracking-wider"
               >
                 Last Updated
               </th>
               <th
-                class="text-right py-3 px-4 text-[10px] font-semibold text-slate-400 uppercase tracking-wider"
+                class="text-right py-3 px-4 text-[0.625rem] font-semibold text-slate-400 uppercase tracking-wider"
               ></th>
             </tr>
           </thead>
@@ -114,7 +114,7 @@
                       <span class="text-sm font-semibold text-slate-900"
                         >{{ row.sensorValue }} {{ row.unit }}</span
                       >
-                      <p class="text-[10px] text-slate-400 m-0 mt-0.5">
+                      <p class="text-[0.625rem] text-slate-400 m-0 mt-0.5">
                         {{ row.room.status === 'online' ? 'just now' : 'offline' }}
                       </p>
                     </div>
@@ -125,7 +125,7 @@
                 <td class="py-3.5 px-4">
                   @if (row.range) {
                     <span
-                      class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold text-white"
+                      class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[0.6875rem] font-semibold text-white"
                       [style.background-color]="row.range.color"
                     >
                       {{ row.range.name }}

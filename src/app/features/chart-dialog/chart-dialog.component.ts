@@ -1,5 +1,12 @@
-import { Component, ChangeDetectionStrategy, inject, signal, computed } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  inject,
+  signal,
+  computed,
+  effect,
+} from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { TitleCasePipe } from '@angular/common';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -8,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { Observable } from 'rxjs';
 import {
   CustomChart,
   ChartRange,
@@ -47,13 +55,6 @@ export class ChartDialogComponent {
 
   readonly selectableRooms = this.dashboardService.selectableRooms();
 
-  /** Reactive signal tracking selected room IDs to compute available sensor types */
-  readonly selectedRoomIds = signal<string[]>(this.dialogData.chart?.roomIds ?? []);
-
-  readonly availableSensorTypes = computed<SensorType[]>(() => {
-    return this.dashboardService.commonSensorTypes(this.selectedRoomIds());
-  });
-
   /** Validation error messages for ranges */
   readonly rangeErrors = signal<string | null>(null);
 
@@ -67,17 +68,24 @@ export class ChartDialogComponent {
     sensorType: [this.dialogData.chart?.sensorType ?? '', [Validators.required]],
   });
 
-  // Watch roomIds changes to update available sensor types (takeUntilDestroyed prevents leaks)
-  private readonly _roomIdsWatcher = this.form
-    .get('roomIds')!
-    .valueChanges.pipe(takeUntilDestroyed())
-    .subscribe((ids: string[]) => {
-      this.selectedRoomIds.set(ids);
-      const current = this.form.get('sensorType')!.value;
-      if (current && !this.availableSensorTypes().includes(current)) {
-        this.form.get('sensorType')!.setValue('');
-      }
-    });
+  /** Reactive signal derived from the roomIds form control — drives available sensor types */
+  readonly selectedRoomIds = toSignal(
+    this.form.get('roomIds')!.valueChanges as Observable<string[]>,
+    { initialValue: this.dialogData.chart?.roomIds ?? [] },
+  );
+
+  readonly availableSensorTypes = computed<SensorType[]>(() => {
+    return this.dashboardService.commonSensorTypes(this.selectedRoomIds());
+  });
+
+  /** Reset sensor type whenever it is no longer valid for the current room selection */
+  private readonly _sensorTypeReset = effect(() => {
+    const available = this.availableSensorTypes();
+    const current = this.form.get('sensorType')!.value as string;
+    if (current && !available.includes(current as SensorType)) {
+      this.form.get('sensorType')!.setValue('', { emitEvent: false });
+    }
+  });
 
   /* ── Range management ───────────────────────────────── */
 

@@ -86,14 +86,13 @@ export class DashboardComponent {
   private trendChart: Chart | null = null;
   private statusChart: Chart<'doughnut'> | null = null;
 
-  constructor() {
+  private readonly _setup = (() => {
     this.dashboardService.init();
-
     this.destroyRef.onDestroy(() => {
       this.trendChart?.destroy();
       this.statusChart?.destroy();
     });
-  }
+  })();
 
   private readonly _trendEffect = effect(() => {
     const canvas = this.trendCanvasRef();
@@ -172,6 +171,7 @@ export class DashboardComponent {
   openListView(chartId: string): void {
     this.dialog.open(ListViewComponent, {
       width: DIALOG_WIDTHS.WIDE,
+      maxWidth: '95vw',
       height: DIALOG_HEIGHTS.LIST,
       panelClass: 'list-view-dialog',
       data: { chartId } as ListViewDialogData,

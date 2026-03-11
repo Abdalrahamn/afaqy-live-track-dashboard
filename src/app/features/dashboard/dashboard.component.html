@@ -20,7 +20,7 @@
         class="flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-lg font-semibold text-sm hover:bg-blue-700 transition-colors shadow-sm cursor-pointer border-0"
         (click)="openAddDialog()"
       >
-        <mat-icon class="text-lg! w-4.5! h-4.5!">add</mat-icon>
+        <mat-icon class="text-xl! w-5! h-5! leading-none! shrink-0">add</mat-icon>
         Add Custom Chart
       </button>
     </div>
@@ -28,7 +28,7 @@
     <!-- Stats Cards -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
       <div class="bg-white rounded-xl p-5 border border-slate-200/60 shadow-sm">
-        <p class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider m-0 mb-3">
+        <p class="text-[0.6875rem] font-semibold text-slate-400 uppercase tracking-wider m-0 mb-3">
           Total Rooms
         </p>
         <p class="text-3xl font-bold text-slate-900 m-0 mb-1">
@@ -40,7 +40,7 @@
         </p>
       </div>
       <div class="bg-white rounded-xl p-5 border border-slate-200/60 shadow-sm">
-        <p class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider m-0 mb-3">
+        <p class="text-[0.6875rem] font-semibold text-slate-400 uppercase tracking-wider m-0 mb-3">
           Online
         </p>
         <p class="text-3xl font-bold text-slate-900 m-0 mb-1">
@@ -52,7 +52,7 @@
         </p>
       </div>
       <div class="bg-white rounded-xl p-5 border border-slate-200/60 shadow-sm">
-        <p class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider m-0 mb-3">
+        <p class="text-[0.6875rem] font-semibold text-slate-400 uppercase tracking-wider m-0 mb-3">
           Offline
         </p>
         <p class="text-3xl font-bold text-slate-900 m-0 mb-1">
@@ -66,7 +66,7 @@
         </p>
       </div>
       <div class="bg-white rounded-xl p-5 border border-slate-200/60 shadow-sm">
-        <p class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider m-0 mb-3">
+        <p class="text-[0.6875rem] font-semibold text-slate-400 uppercase tracking-wider m-0 mb-3">
           Active Alerts
         </p>
         <p class="text-3xl font-bold text-slate-900 m-0 mb-1">12</p>
@@ -112,7 +112,7 @@
               <span class="text-2xl font-bold text-slate-900">{{
                 dashboardService.onlineCount()
               }}</span>
-              <span class="text-[10px] text-slate-400 font-medium">Online</span>
+              <span class="text-[0.625rem] text-slate-400 font-medium">Online</span>
             </div>
           </div>
           <div class="flex flex-col gap-3">
@@ -136,7 +136,7 @@
                 >{{ dashboardService.offlinePercentage() }}%</span
               >
             </div>
-            <p class="text-[10px] text-slate-400 m-0 mt-2">
+            <p class="text-[0.625rem] text-slate-400 m-0 mt-2">
               Last updated<br /><span class="font-semibold text-slate-600">Just now</span>
             </p>
           </div>
@@ -178,7 +178,7 @@
         cdkDropList
         [cdkDropListData]="dashboardService.chartDisplayData()"
         (cdkDropListDropped)="onDrop($event)"
-        class="grid grid-cols-1 gap-4 md:grid-cols-[repeat(auto-fill,minmax(320px,1fr))] md:gap-5"
+        class="grid grid-cols-1 gap-4 md:grid-cols-[repeat(auto-fill,minmax(20rem,1fr))] md:gap-5"
       >
         @for (displayData of dashboardService.chartDisplayData(); track displayData.chart.id) {
           <div cdkDrag class="cursor-grab active:cursor-grabbing">

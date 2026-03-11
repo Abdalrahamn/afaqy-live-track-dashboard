@@ -1,4 +1,4 @@
-<div class="flex flex-col max-h-[85vh]">
+<div class="flex flex-col h-full">
   <!-- Header -->
   <div class="flex items-center justify-between px-6 pt-6 pb-4">
     <h2 class="text-lg font-bold text-slate-900 m-0">{{ title }}</h2>
@@ -23,7 +23,7 @@
           placeholder="e.g. Temperature Zones"
           class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all bg-white"
         />
-        <p class="text-[11px] text-slate-400 m-0 mt-1.5">Must be unique across your charts.</p>
+        <p class="text-[0.6875rem] text-slate-400 m-0 mt-1.5">Must be unique across your charts.</p>
         @if (form.get('name')!.hasError('required') && form.get('name')!.touched) {
           <p class="text-xs text-red-500 m-0 mt-1">Chart name is required</p>
         }
@@ -44,8 +44,9 @@
             }
           </mat-select>
         </mat-form-field>
-        <p class="text-[11px] text-slate-400 m-0 -mt-3">
-          Only rooms with sensors are shown. {{ form.get('roomIds')!.value?.length || 0 }} rooms selected.
+        <p class="text-[0.6875rem] text-slate-400 m-0 -mt-3">
+          Only rooms with sensors are shown. {{ form.get('roomIds')!.value?.length || 0 }} rooms
+          selected.
         </p>
         @if (form.get('roomIds')!.hasError('required') && form.get('roomIds')!.touched) {
           <p class="text-xs text-red-500 m-0 mt-1">At least one room must be selected</p>
@@ -64,12 +65,16 @@
             }
           </mat-select>
         </mat-form-field>
-        <p class="text-[11px] text-slate-400 m-0 -mt-3">Only sensor types available in all selected rooms are shown.</p>
+        <p class="text-[0.6875rem] text-slate-400 m-0 -mt-3">
+          Only sensor types available in all selected rooms are shown.
+        </p>
         @if (form.get('sensorType')!.hasError('required') && form.get('sensorType')!.touched) {
           <p class="text-xs text-red-500 m-0 mt-1">Sensor type is required</p>
         }
         @if (selectedRoomIds().length > 0 && availableSensorTypes().length === 0) {
-          <p class="text-xs text-amber-500 font-semibold m-0 mt-1">No common sensor types across selected rooms</p>
+          <p class="text-xs text-amber-500 font-semibold m-0 mt-1">
+            No common sensor types across selected rooms
+          </p>
         }
       </div>
 
@@ -79,21 +84,27 @@
           <label class="text-sm font-semibold text-slate-700">
             Value Ranges <span class="text-red-400">*</span>
           </label>
-          <span class="text-[11px] text-slate-400">Ranges must not overlap</span>
+          <span class="text-[0.6875rem] text-slate-400">Ranges must not overlap</span>
         </div>
 
         <!-- Ranges table header -->
-        <div class="grid grid-cols-[2fr_1fr_1fr_56px_28px] gap-2 mb-2 px-1">
-          <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Range Name</span>
-          <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">From</span>
-          <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">To</span>
-          <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Colour</span>
+        <div class="grid grid-cols-[2fr_1fr_1fr_3.5rem_1.75rem] gap-2 mb-2 px-1">
+          <span class="text-[0.625rem] font-semibold text-slate-400 uppercase tracking-wider"
+            >Range Name</span
+          >
+          <span class="text-[0.625rem] font-semibold text-slate-400 uppercase tracking-wider"
+            >From</span
+          >
+          <span class="text-[0.625rem] font-semibold text-slate-400 uppercase tracking-wider">To</span>
+          <span class="text-[0.625rem] font-semibold text-slate-400 uppercase tracking-wider"
+            >Colour</span
+          >
           <span></span>
         </div>
 
         @for (rangeGroup of rangesArray.controls; track $index; let i = $index) {
           <div
-            class="grid grid-cols-[2fr_1fr_1fr_56px_28px] gap-2 items-center mb-2"
+            class="grid grid-cols-[2fr_1fr_1fr_3.5rem_1.75rem] gap-2 items-center mb-2"
             [formGroup]="$any(rangeGroup)"
           >
             <input

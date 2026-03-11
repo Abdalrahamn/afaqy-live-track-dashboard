@@ -4,7 +4,7 @@
   <!-- Header -->
   <div class="flex items-start justify-between p-5 pb-0">
     <div>
-      <h3 class="text-[15px] font-bold text-slate-900 m-0 leading-tight">
+      <h3 class="text-[0.9375rem] font-bold text-slate-900 m-0 leading-tight">
         {{ data().chart.name }}
       </h3>
       <p class="text-xs text-slate-400 m-0 mt-1">
@@ -48,7 +48,7 @@
             <span class="text-xl font-bold text-slate-900 leading-none">{{
               data().totalQualified
             }}</span>
-            <span class="text-[9px] text-slate-400 font-medium mt-0.5">rooms</span>
+            <span class="text-[0.5625rem] text-slate-400 font-medium mt-0.5">rooms</span>
           </div>
         </div>
         <!-- Legend -->
@@ -59,7 +59,7 @@
                 class="w-2.5 h-2.5 rounded-full shrink-0"
                 [style.background-color]="segment.color"
               ></span>
-              <span class="text-slate-600 truncate font-medium text-[13px]">{{
+              <span class="text-slate-600 truncate font-medium text-[0.8125rem]">{{
                 segment.rangeName
               }}</span>
               <span class="text-slate-900 font-bold ml-auto">{{ segment.count }}</span>

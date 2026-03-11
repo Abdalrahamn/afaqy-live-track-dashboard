@@ -42,6 +42,8 @@ export class DashboardService {
   readonly loading = signal(true);
   readonly error = signal<string | null>(null);
 
+  private _initialized = false;
+
   private readonly storage = inject(StorageService);
   private readonly socket = inject(SocketService);
   private readonly destroyRef = inject(DestroyRef);
@@ -102,6 +104,9 @@ export class DashboardService {
   /* ── Initialization ─────────────────────────────────── */
 
   init(): void {
+    if (this._initialized) return;
+    this._initialized = true;
+
     try {
       const data = mockData as unknown as MockData;
 

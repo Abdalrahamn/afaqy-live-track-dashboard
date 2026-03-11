@@ -42,11 +42,9 @@ export class ChartCardComponent {
 
   readonly hasData = computed(() => this.data().segments.some((s) => s.count > 0));
 
-  constructor() {
-    this.destroyRef.onDestroy(() => {
-      this.chartInstance?.destroy();
-    });
-  }
+  private readonly _onDestroy = this.destroyRef.onDestroy(() => {
+    this.chartInstance?.destroy();
+  });
 
   private readonly _chartEffect = effect(() => {
     const canvas = this.canvasRef();
