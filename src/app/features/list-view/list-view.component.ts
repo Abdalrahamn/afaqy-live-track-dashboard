@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy, inject, computed, signal } from '@a
 import { TitleCasePipe } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import { CustomChart, ChartRange, Room, RoomStatus, ListViewDialogData } from '@core/models';
+import { CustomChart, ChartRange, RoomStatus, ListViewDialogData } from '@core/models';
 import { DashboardService } from '@core/services';
 import {
   RoomDetailComponent,

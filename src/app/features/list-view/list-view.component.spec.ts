@@ -37,12 +37,12 @@ const mockRooms: Room[] = [
   },
 ];
 
-function createMockService() {
+function createMockService(): Partial<DashboardService> {
   return {
     charts: signal([mockChart]),
     roomMap: signal(new Map(mockRooms.map((r) => [r.id, r]))),
     getChartById: vi.fn().mockReturnValue(mockChart),
-  } as any;
+  };
 }
 
 describe('ListViewComponent', () => {

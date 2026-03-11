@@ -6,7 +6,6 @@ import {
   SocketEvent,
   SensorUpdateEvent,
   RoomStatusEvent,
-  SensorType,
   RoomStatus,
   SocketEventType,
 } from '@core/models';

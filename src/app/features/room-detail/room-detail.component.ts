@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/materia
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
-import { Room, CustomChart, ChartRange, RoomStatus, RoomDetailDialogData } from '@core/models';
+import { RoomStatus, RoomDetailDialogData } from '@core/models';
 
 export type { RoomDetailDialogData };
 

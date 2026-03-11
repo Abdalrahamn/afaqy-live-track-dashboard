@@ -36,7 +36,6 @@ import {
   TREND_Y_MAX,
   DIALOG_WIDTHS,
   DIALOG_HEIGHTS,
-  DIALOG_MAX_HEIGHT,
 } from '@core/constants';
 import { ChartDisplayData } from '@core/models';
 import { ChartCardComponent } from '@features/chart-card/chart-card.component';

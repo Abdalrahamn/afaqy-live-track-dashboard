@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { signal } from '@angular/core';
 import { RoomsComponent } from './rooms.component';
 import { DashboardService } from '@core/services';
-import { Room, RoomStatus } from '@core/models';
+import { Room, RoomStatus, SensorType } from '@core/models';
 
 const mockRooms: Room[] = [
   {
@@ -11,14 +11,14 @@ const mockRooms: Room[] = [
     name: 'Room 101',
     floor: 1,
     status: RoomStatus.Online,
-    sensors: [{ type: 'temperature' as any, value: 21.5, unit: '°C' }],
+    sensors: [{ type: SensorType.Temperature, value: 21.5, unit: '°C' }],
   },
   {
     id: 'r-102',
     name: 'Room 102',
     floor: 1,
     status: RoomStatus.Offline,
-    sensors: [{ type: 'humidity' as any, value: 55, unit: '%' }],
+    sensors: [{ type: SensorType.Humidity, value: 55, unit: '%' }],
   },
 ];
 
@@ -33,7 +33,7 @@ describe('RoomsComponent', () => {
       onlineCount: signal(1),
       offlineCount: signal(1),
       init: vi.fn(),
-    } as any;
+    };
 
     TestBed.configureTestingModule({
       imports: [RoomsComponent],

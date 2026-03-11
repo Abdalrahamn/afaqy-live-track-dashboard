@@ -2,7 +2,6 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { TestBed } from '@angular/core/testing';
 import { ChartCardComponent } from './chart-card.component';
 import { ChartDisplayData, SensorType } from '@core/models';
-import { Component, signal } from '@angular/core';
 
 const mockDisplayData: ChartDisplayData = {
   chart: {

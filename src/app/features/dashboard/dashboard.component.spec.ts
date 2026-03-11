@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { TestBed } from '@angular/core/testing';
 import { signal } from '@angular/core';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material/dialog';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardService } from '@core/services';
@@ -39,7 +40,7 @@ describe('DashboardComponent', () => {
       deleteChart: vi.fn(),
       reorderCharts: vi.fn(),
       getChartById: vi.fn().mockReturnValue(mockDisplayData[0].chart),
-    } as any;
+    };
 
     mockDialog = {
       open: vi.fn().mockReturnValue({ afterClosed: () => of(undefined) }),
@@ -66,7 +67,9 @@ describe('DashboardComponent', () => {
 
   it('onDrop reorders charts via dashboardService', () => {
     const fixture = TestBed.createComponent(DashboardComponent);
-    const event = { previousIndex: 0, currentIndex: 1 } as any;
+    const event = { previousIndex: 0, currentIndex: 1 } as unknown as CdkDragDrop<
+      ChartDisplayData[]
+    >;
     fixture.componentInstance.onDrop(event);
     expect(mockService.reorderCharts).toHaveBeenCalled();
   });

@@ -26,13 +26,13 @@ const mockRooms = [
   },
 ];
 
-function createMockService(charts: CustomChart[] = []) {
+function createMockService(charts: CustomChart[] = []): Partial<DashboardService> {
   return {
     selectableRooms: vi.fn().mockReturnValue(mockRooms),
     charts: signal(charts),
     commonSensorTypes: vi.fn().mockReturnValue([SensorType.Temperature]),
     roomMap: signal(new Map(mockRooms.map((r) => [r.id, r]))),
-  } as any;
+  };
 }
 
 describe('ChartDialogComponent — create mode', () => {

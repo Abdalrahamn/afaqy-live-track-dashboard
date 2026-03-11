@@ -1,9 +1,10 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { DashboardService } from './dashboard.service';
 import { StorageService } from '../storage/storage.service';
 import { SocketService } from '../socket/socket.service';
-import { CustomChart, SensorType, RoomStatus } from '@core/models';
+import { CustomChart, SensorType, SocketEvent } from '@core/models';
 import { Subject } from 'rxjs';
 
 const mockChart: CustomChart = {
@@ -19,7 +20,7 @@ describe('DashboardService', () => {
   let service: DashboardService;
   let mockStorage: Partial<StorageService>;
   let mockSocket: Partial<SocketService>;
-  const socketEvents$ = new Subject<never>();
+  const socketEvents$ = new Subject<SocketEvent>();
 
   beforeEach(() => {
     mockStorage = {
@@ -30,9 +31,9 @@ describe('DashboardService', () => {
     };
 
     mockSocket = {
-      socketEvents$: socketEvents$.asObservable() as any,
+      socketEvents$: socketEvents$.asObservable(),
       start: vi.fn(),
-      connected: { set: vi.fn() } as any,
+      connected: signal(false),
     };
 
     TestBed.configureTestingModule({
