@@ -36,6 +36,7 @@ import {
   TREND_Y_MAX,
   DIALOG_WIDTHS,
   DIALOG_HEIGHTS,
+  DIALOG_MAX_HEIGHT,
 } from '@core/constants';
 import { ChartDisplayData } from '@core/models';
 import { ChartCardComponent } from '@features/chart-card/chart-card.component';
@@ -114,6 +115,7 @@ export class DashboardComponent {
       width: DIALOG_WIDTHS.STANDARD,
       maxWidth: '95vw',
       height: DIALOG_HEIGHTS.ADD_EDIT,
+      maxHeight: DIALOG_MAX_HEIGHT,
       disableClose: true,
       data: {} as ChartDialogData,
     });
@@ -136,6 +138,7 @@ export class DashboardComponent {
       width: DIALOG_WIDTHS.STANDARD,
       maxWidth: '95vw',
       height: DIALOG_HEIGHTS.ADD_EDIT,
+      maxHeight: DIALOG_MAX_HEIGHT,
       disableClose: true,
       data: { chart } as ChartDialogData,
     });
