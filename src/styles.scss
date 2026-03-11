@@ -1,0 +1,245 @@
+@use '@angular/material' as mat;
+
+:root {
+  // Colors
+  --surface-bg: #f4f6fb;
+  --surface-bg-alt: #eef1f8;
+  --card-bg: #ffffff;
+  --card-border: rgba(0, 0, 0, 0.05);
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --card-shadow-hover: 0 8px 30px rgba(99, 102, 241, 0.1), 0 2px 8px rgba(0, 0, 0, 0.06);
+  --card-shadow-elevated: 0 12px 40px rgba(99, 102, 241, 0.12), 0 4px 12px rgba(0, 0, 0, 0.08);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --accent-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a78bfa 100%);
+  --accent-gradient-subtle: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.08),
+    rgba(139, 92, 246, 0.06)
+  );
+  --accent-color: #6366f1;
+  --accent-color-dark: #4f46e5;
+  --accent-light: #eef2ff;
+  --accent-lighter: #f5f3ff;
+  --danger-color: #ef4444;
+  --danger-light: #fef2f2;
+  --success-color: #22c55e;
+  --success-light: #f0fdf4;
+  --warning-color: #f59e0b;
+  --warning-light: #fffbeb;
+
+  // Spacing
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+
+  // Radii
+  --radius-xs: 0.375rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  // Transitions
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+  height: 100%;
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$violet-palette,
+        tertiary: mat.$blue-palette,
+      ),
+      typography: Inter,
+      density: 0,
+    )
+  );
+}
+
+body {
+  color-scheme: light;
+  background-color: var(--surface-bg);
+  color: var(--text-primary);
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin: 0;
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+// ── Scrollbar ──────────────────────────────────────────
+::-webkit-scrollbar {
+  width: 0.375rem;
+  height: 0.375rem;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 0.1875rem;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.2);
+  }
+}
+
+// ── Angular Material Global Overrides ──────────────────
+
+// Dialog overrides
+html .mat-mdc-dialog-container {
+  --mdc-dialog-container-shape: 1rem; // 16px
+
+  .mdc-dialog__surface {
+    border-radius: 1rem;
+    box-shadow: var(--card-shadow-elevated);
+  }
+}
+
+// List-view dialog: horizontal layout with top padding
+.list-view-dialog .mat-mdc-dialog-container {
+  .mdc-dialog__surface {
+    padding-top: 2.5rem; // 40px
+  }
+}
+
+html .mat-mdc-dialog-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  padding: var(--space-lg) var(--space-lg) var(--space-md);
+}
+
+html .mat-mdc-dialog-content {
+  padding: 0 var(--space-lg) var(--space-md);
+  font-family: 'Inter', sans-serif;
+}
+
+html .mat-mdc-dialog-actions {
+  padding: var(--space-md) var(--space-lg) var(--space-lg);
+  gap: var(--space-sm);
+}
+
+// Button overrides
+html .mat-mdc-button,
+html .mat-mdc-raised-button,
+html .mat-mdc-unelevated-button,
+html .mat-mdc-outlined-button {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  border-radius: var(--radius-md);
+}
+
+html .mat-mdc-icon-button {
+  border-radius: var(--radius-md);
+}
+
+// Form field overrides
+html .mat-mdc-form-field {
+  font-family: 'Inter', sans-serif;
+
+  .mdc-text-field--outlined {
+    border-radius: var(--radius-md);
+
+    .mdc-notched-outline__leading {
+      border-radius: var(--radius-md) 0 0 var(--radius-md);
+    }
+
+    .mdc-notched-outline__trailing {
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+  }
+}
+
+// Menu overrides
+html .mat-mdc-menu-panel {
+  border-radius: var(--radius-md);
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--card-border);
+
+  .mat-mdc-menu-item {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.844rem;
+    border-radius: var(--radius-sm);
+    margin: 0.125rem 0.25rem;
+
+    &:hover {
+      background-color: var(--accent-light);
+    }
+  }
+}
+
+// Table overrides
+html .mat-mdc-table {
+  font-family: 'Inter', sans-serif;
+  background: transparent;
+
+  .mat-mdc-header-row {
+    background: var(--surface-bg-alt);
+
+    .mat-mdc-header-cell {
+      font-weight: 600;
+      color: var(--text-secondary);
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 2px solid var(--card-border);
+    }
+  }
+
+  .mat-mdc-row {
+    transition: background-color var(--transition-fast);
+
+    .mat-mdc-cell {
+      font-size: 13.5px;
+      color: var(--text-primary);
+      border-bottom-color: var(--card-border);
+    }
+  }
+}
+
+// Toolbar overrides
+html .mat-toolbar {
+  font-family: 'Inter', sans-serif;
+}
+
+// Chip overrides
+html .mat-mdc-chip {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  border-radius: var(--radius-full);
+}
+
+// Progress bar
+.mat-mdc-progress-bar {
+  --mdc-linear-progress-active-indicator-height: 3px;
+}

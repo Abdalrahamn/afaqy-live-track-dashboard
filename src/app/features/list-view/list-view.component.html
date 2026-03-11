@@ -1,0 +1,171 @@
+<div class="flex flex-col max-h-[85vh]">
+  @if (chart(); as c) {
+    <!-- Header -->
+    <div class="flex items-start justify-between px-6 pt-6 pb-4">
+      <div class="flex items-start gap-3">
+        <button
+          class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-slate-100 text-slate-400 transition-colors cursor-pointer border-0 bg-transparent mt-0.5"
+          (click)="close()"
+        >
+          <mat-icon class="text-xl!">arrow_back</mat-icon>
+        </button>
+        <div>
+          <h2 class="text-lg font-bold text-slate-900 m-0">{{ c.name }} — List View</h2>
+          <p class="text-xs text-slate-400 m-0 mt-1">
+            Sensor: {{ c.sensorType | titlecase }} · {{ rows().length }} rooms tracked
+          </p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <span
+          class="inline-flex items-center px-2.5 py-1 bg-green-50 text-green-600 text-[11px] font-semibold rounded-full"
+          >Live</span
+        >
+        <button
+          class="flex items-center gap-1.5 px-4 py-2 border border-slate-200 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer bg-white"
+          (click)="exportCsv()"
+          [disabled]="rows().length === 0"
+        >
+          <mat-icon class="text-base! w-4! h-4!">download</mat-icon>
+          Export
+        </button>
+        <button
+          class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-slate-100 text-slate-400 transition-colors cursor-pointer border-0 bg-transparent"
+          (click)="close()"
+        >
+          <mat-icon class="text-lg!">close</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <!-- Search & Filters -->
+    <div class="px-6 pb-4 flex items-center gap-3">
+      <div class="flex-1 relative">
+        <mat-icon
+          class="absolute! left-3 top-1/2 -translate-y-1/2 text-slate-400! text-lg! w-4.5! h-4.5!"
+          >search</mat-icon
+        >
+        <input
+          type="text"
+          placeholder="Search rooms..."
+          [value]="searchQuery()"
+          (input)="onSearch($event)"
+          class="w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all bg-white"
+        />
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="flex-1 overflow-y-auto px-6">
+      @if (filteredRows().length === 0) {
+        <div class="flex flex-col items-center justify-center p-12 text-slate-400 gap-4">
+          <mat-icon class="text-[52px]! h-13! w-13! opacity-30">info</mat-icon>
+          <p class="text-sm font-medium m-0">No rooms match your search.</p>
+        </div>
+      } @else {
+        <table class="w-full border-collapse">
+          <thead>
+            <tr class="border-b border-slate-200">
+              <th
+                class="text-left py-3 px-4 text-[10px] font-semibold text-slate-400 uppercase tracking-wider"
+              >
+                Room
+              </th>
+              <th
+                class="text-left py-3 px-4 text-[10px] font-semibold text-slate-400 uppercase tracking-wider"
+              >
+                Current Reading
+              </th>
+              <th
+                class="text-left py-3 px-4 text-[10px] font-semibold text-slate-400 uppercase tracking-wider"
+              >
+                Range
+              </th>
+              <th
+                class="text-left py-3 px-4 text-[10px] font-semibold text-slate-400 uppercase tracking-wider"
+              >
+                Trend
+              </th>
+              <th
+                class="text-left py-3 px-4 text-[10px] font-semibold text-slate-400 uppercase tracking-wider"
+              >
+                Last Updated
+              </th>
+              <th
+                class="text-right py-3 px-4 text-[10px] font-semibold text-slate-400 uppercase tracking-wider"
+              ></th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (row of filteredRows(); track row.room.id) {
+              <tr
+                class="border-b border-slate-100 hover:bg-blue-50/30 transition-colors cursor-pointer"
+                (click)="openRoomDetail(row)"
+              >
+                <td class="py-3.5 px-4">
+                  <div class="flex items-center gap-2.5">
+                    <mat-icon class="text-slate-400! text-lg! w-4.5! h-4.5!">home</mat-icon>
+                    <span class="text-sm font-medium text-slate-900">{{ row.room.name }}</span>
+                  </div>
+                </td>
+                <td class="py-3.5 px-4">
+                  @if (row.sensorValue !== null) {
+                    <div>
+                      <span class="text-sm font-semibold text-slate-900"
+                        >{{ row.sensorValue }} {{ row.unit }}</span
+                      >
+                      <p class="text-[10px] text-slate-400 m-0 mt-0.5">
+                        {{ row.room.status === 'online' ? 'just now' : 'offline' }}
+                      </p>
+                    </div>
+                  } @else {
+                    <span class="text-sm text-slate-400 font-medium">N/A</span>
+                  }
+                </td>
+                <td class="py-3.5 px-4">
+                  @if (row.range) {
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold text-white"
+                      [style.background-color]="row.range.color"
+                    >
+                      {{ row.range.name }}
+                    </span>
+                  } @else {
+                    <span class="text-sm text-slate-400">—</span>
+                  }
+                </td>
+                <td class="py-3.5 px-4">
+                  <span class="text-sm text-slate-500 font-medium">→ stable</span>
+                </td>
+                <td class="py-3.5 px-4">
+                  <span class="text-sm text-slate-400">{{
+                    row.room.status === 'online' ? 'Just now' : 'Offline'
+                  }}</span>
+                </td>
+                <td class="py-3.5 px-4 text-right">
+                  <span class="text-xs text-blue-500 font-semibold">Details ›</span>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      }
+    </div>
+
+    <!-- Footer -->
+    <div class="flex items-center justify-between px-6 py-4 border-t border-slate-100">
+      <div class="flex items-center gap-4">
+        @for (s of rangeSummary(); track s.name) {
+          <div class="flex items-center gap-1.5 text-xs">
+            <span class="w-2 h-2 rounded-full" [style.background-color]="s.color"></span>
+            <span class="text-slate-500 font-medium">{{ s.name }}:</span>
+            <span class="text-slate-700 font-bold">{{ s.count }}</span>
+          </div>
+        }
+      </div>
+      <span class="text-xs text-slate-400"
+        >Showing {{ filteredRows().length }} of {{ rows().length }} rooms · Updates live</span
+      >
+    </div>
+  }
+</div>

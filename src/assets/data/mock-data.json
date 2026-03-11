@@ -1,0 +1,280 @@
+{
+  "rooms": [
+    {
+      "id": "r-101",
+      "name": "Room 101",
+      "floor": 1,
+      "status": "online",
+      "sensors": [
+        { "type": "temperature", "value": 16.2, "unit": "°C" },
+        { "type": "humidity",    "value": 42,   "unit": "%" }
+      ]
+    },
+    {
+      "id": "r-102",
+      "name": "Room 102",
+      "floor": 1,
+      "status": "online",
+      "sensors": [
+        { "type": "temperature", "value": 22.8, "unit": "°C" },
+        { "type": "humidity",    "value": 55,   "unit": "%" }
+      ]
+    },
+    {
+      "id": "r-103",
+      "name": "Room 103",
+      "floor": 1,
+      "status": "online",
+      "sensors": [
+        { "type": "temperature", "value": 28.4, "unit": "°C" },
+        { "type": "humidity",    "value": 38,   "unit": "%" }
+      ]
+    },
+    {
+      "id": "r-104",
+      "name": "Room 104",
+      "floor": 1,
+      "status": "offline",
+      "sensors": [
+        { "type": "temperature", "value": 21.0, "unit": "°C" },
+        { "type": "humidity",    "value": 47,   "unit": "%" }
+      ]
+    },
+    {
+      "id": "r-105",
+      "name": "Room 105",
+      "floor": 1,
+      "status": "online",
+      "sensors": [
+        { "type": "temperature", "value": 14.9, "unit": "°C" },
+        { "type": "humidity",    "value": 61,   "unit": "%" }
+      ]
+    },
+    {
+      "id": "r-201",
+      "name": "Room 201",
+      "floor": 2,
+      "status": "online",
+      "sensors": [
+        { "type": "temperature", "value": 24.1, "unit": "°C" },
+        { "type": "humidity",    "value": 33,   "unit": "%" },
+        { "type": "co2",         "value": 610,  "unit": "ppm" }
+      ]
+    },
+    {
+      "id": "r-202",
+      "name": "Room 202",
+      "floor": 2,
+      "status": "online",
+      "sensors": [
+        { "type": "temperature", "value": 19.5, "unit": "°C" },
+        { "type": "humidity",    "value": 68,   "unit": "%" },
+        { "type": "co2",         "value": 870,  "unit": "ppm" }
+      ]
+    },
+    {
+      "id": "r-203",
+      "name": "Room 203",
+      "floor": 2,
+      "status": "online",
+      "sensors": [
+        { "type": "temperature", "value": 27.6, "unit": "°C" },
+        { "type": "humidity",    "value": 44,   "unit": "%" },
+        { "type": "co2",         "value": 490,  "unit": "ppm" }
+      ]
+    },
+    {
+      "id": "r-204",
+      "name": "Room 204",
+      "floor": 2,
+      "status": "online",
+      "sensors": [
+        { "type": "temperature", "value": 20.3, "unit": "°C" },
+        { "type": "humidity",    "value": 72,   "unit": "%" },
+        { "type": "co2",         "value": 1240, "unit": "ppm" }
+      ]
+    },
+    {
+      "id": "r-205",
+      "name": "Room 205",
+      "floor": 2,
+      "status": "offline",
+      "sensors": [
+        { "type": "temperature", "value": 23.0, "unit": "°C" },
+        { "type": "humidity",    "value": 50,   "unit": "%" },
+        { "type": "co2",         "value": 700,  "unit": "ppm" }
+      ]
+    },
+    {
+      "id": "r-301",
+      "name": "Room 301",
+      "floor": 3,
+      "status": "online",
+      "sensors": [
+        { "type": "temperature", "value": 17.3, "unit": "°C" },
+        { "type": "humidity",    "value": 28,   "unit": "%" },
+        { "type": "co2",         "value": 540,  "unit": "ppm" }
+      ]
+    },
+    {
+      "id": "r-302",
+      "name": "Room 302",
+      "floor": 3,
+      "status": "online",
+      "sensors": [
+        { "type": "temperature", "value": 30.1, "unit": "°C" },
+        { "type": "humidity",    "value": 36,   "unit": "%" },
+        { "type": "co2",         "value": 1620, "unit": "ppm" }
+      ]
+    },
+    {
+      "id": "r-303",
+      "name": "Room 303",
+      "floor": 3,
+      "status": "online",
+      "sensors": [
+        { "type": "temperature", "value": 22.5, "unit": "°C" },
+        { "type": "humidity",    "value": 59,   "unit": "%" },
+        { "type": "co2",         "value": 780,  "unit": "ppm" }
+      ]
+    },
+    {
+      "id": "r-304",
+      "name": "Room 304",
+      "floor": 3,
+      "status": "online",
+      "sensors": [
+        { "type": "temperature", "value": 25.8, "unit": "°C" },
+        { "type": "humidity",    "value": 76,   "unit": "%" },
+        { "type": "co2",         "value": 920,  "unit": "ppm" }
+      ]
+    },
+    {
+      "id": "r-305",
+      "name": "Room 305",
+      "floor": 3,
+      "status": "online",
+      "sensors": [
+        { "type": "temperature", "value": 13.4, "unit": "°C" },
+        { "type": "humidity",    "value": 44,   "unit": "%" },
+        { "type": "co2",         "value": 460,  "unit": "ppm" }
+      ]
+    },
+    {
+      "id": "r-401",
+      "name": "Room 401",
+      "floor": 4,
+      "status": "online",
+      "sensors": [
+        { "type": "temperature", "value": 21.7, "unit": "°C" },
+        { "type": "humidity",    "value": 31,   "unit": "%" },
+        { "type": "co2",         "value": 580,  "unit": "ppm" }
+      ]
+    },
+    {
+      "id": "r-402",
+      "name": "Room 402",
+      "floor": 4,
+      "status": "online",
+      "sensors": [
+        { "type": "temperature", "value": 26.9, "unit": "°C" },
+        { "type": "humidity",    "value": 65,   "unit": "%" },
+        { "type": "co2",         "value": 1380, "unit": "ppm" }
+      ]
+    },
+    {
+      "id": "r-403",
+      "name": "Room 403",
+      "floor": 4,
+      "status": "online",
+      "sensors": [
+        { "type": "temperature", "value": 18.6, "unit": "°C" },
+        { "type": "humidity",    "value": 53,   "unit": "%" },
+        { "type": "co2",         "value": 710,  "unit": "ppm" }
+      ]
+    },
+    {
+      "id": "r-404",
+      "name": "Room 404",
+      "floor": 4,
+      "status": "online",
+      "sensors": [
+        { "type": "temperature", "value": 23.3, "unit": "°C" },
+        { "type": "humidity",    "value": 40,   "unit": "%" },
+        { "type": "co2",         "value": 850,  "unit": "ppm" }
+      ]
+    },
+    {
+      "id": "r-405",
+      "name": "Room 405",
+      "floor": 4,
+      "status": "offline",
+      "sensors": [
+        { "type": "temperature", "value": 20.0, "unit": "°C" },
+        { "type": "humidity",    "value": 48,   "unit": "%" },
+        { "type": "co2",         "value": 650,  "unit": "ppm" }
+      ]
+    }
+  ],
+
+  "customCharts": [
+    {
+      "id": "chart-temp",
+      "name": "Temperature Zones",
+      "sensorType": "temperature",
+      "roomIds": [
+        "r-101","r-102","r-103","r-104","r-105",
+        "r-201","r-202","r-203","r-204","r-205",
+        "r-301","r-302","r-303","r-304","r-305",
+        "r-401","r-402","r-403","r-404","r-405"
+      ],
+      "ranges": [
+        { "name": "Cold",   "from": 0,  "to": 18, "color": "#7DD3FC" },
+        { "name": "Normal", "from": 18, "to": 26, "color": "#4ADE80" },
+        { "name": "Hot",    "from": 26, "to": 60, "color": "#FB923C" }
+      ],
+      "order": 0
+    },
+    {
+      "id": "chart-hum",
+      "name": "Humidity Levels",
+      "sensorType": "humidity",
+      "roomIds": [
+        "r-101","r-102","r-103","r-104","r-105",
+        "r-201","r-202","r-203","r-204","r-205",
+        "r-301","r-302","r-303","r-304","r-305",
+        "r-401","r-402","r-403","r-404","r-405"
+      ],
+      "ranges": [
+        { "name": "Dry",     "from": 0,  "to": 30,  "color": "#C7D2FE" },
+        { "name": "Optimal", "from": 30, "to": 70,  "color": "#818CF8" },
+        { "name": "Humid",   "from": 70, "to": 100, "color": "#3730A3" }
+      ],
+      "order": 1
+    },
+    {
+      "id": "chart-co2",
+      "name": "CO₂ Monitor",
+      "sensorType": "co2",
+      "roomIds": [
+        "r-201","r-202","r-203","r-204","r-205",
+        "r-301","r-302","r-303","r-304","r-305",
+        "r-401","r-402","r-403","r-404","r-405"
+      ],
+      "ranges": [
+        { "name": "Safe",     "from": 0,    "to": 800,  "color": "#86EFAC" },
+        { "name": "Moderate", "from": 800,  "to": 1500, "color": "#FCD34D" },
+        { "name": "Danger",   "from": 1500, "to": 5000, "color": "#F87171" }
+      ],
+      "order": 2
+    }
+  ],
+
+  "chartOrder": ["chart-temp", "chart-hum", "chart-co2"],
+
+  "sensorBounds": {
+    "temperature": { "min": 12,  "max": 35,   "unit": "°C"  },
+    "humidity":    { "min": 20,  "max": 85,   "unit": "%"   },
+    "co2":         { "min": 350, "max": 2000, "unit": "ppm" }
+  }
+}

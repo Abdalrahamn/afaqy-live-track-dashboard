@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Delete Chart</h2>
+<mat-dialog-content>
+  <p class="text-slate-600 text-sm leading-relaxed mb-2">
+    Are you sure you want to delete
+    <strong class="text-slate-900 font-bold">{{ data.chartName }}</strong
+    >?
+  </p>
+  <p class="warning-notice">This action cannot be undone.</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="dialogRef.close(false)">Cancel</button>
+  <button mat-flat-button color="warn" (click)="dialogRef.close(true)">Delete</button>
+</mat-dialog-actions>

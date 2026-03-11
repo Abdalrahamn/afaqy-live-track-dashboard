@@ -1,0 +1,92 @@
+<div
+  class="bg-white rounded-xl border border-slate-200/60 shadow-sm hover:shadow-md transition-all h-full flex flex-col overflow-hidden group"
+>
+  <!-- Header -->
+  <div class="flex items-start justify-between p-5 pb-0">
+    <div>
+      <h3 class="text-[15px] font-bold text-slate-900 m-0 leading-tight">
+        {{ data().chart.name }}
+      </h3>
+      <p class="text-xs text-slate-400 m-0 mt-1">
+        Sensor: {{ data().chart.sensorType | titlecase }} · {{ data().totalQualified }} rooms
+      </p>
+    </div>
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="chartMenu"
+      class="text-slate-300! opacity-60 group-hover:opacity-100 hover:text-slate-500! hover:bg-slate-100! w-8! h-8! transition-all"
+      aria-label="Chart options"
+    >
+      <mat-icon class="text-lg!">more_vert</mat-icon>
+    </button>
+    <mat-menu #chartMenu="matMenu">
+      <button mat-menu-item (click)="onOpenList()" [disabled]="!hasData()">
+        <mat-icon>list</mat-icon>
+        <span>List View</span>
+      </button>
+      <button mat-menu-item (click)="onEdit()">
+        <mat-icon>edit</mat-icon>
+        <span>Edit Chart</span>
+      </button>
+      <button mat-menu-item (click)="onDelete()" class="text-red-500!">
+        <mat-icon class="text-red-500!">delete</mat-icon>
+        <span>Delete Chart</span>
+      </button>
+    </mat-menu>
+  </div>
+
+  <!-- Body -->
+  <div class="flex-1 flex items-center px-5 py-4">
+    @if (hasData()) {
+      <div class="flex items-center gap-5 w-full">
+        <!-- Doughnut -->
+        <div class="relative shrink-0" style="width: 7.5rem; height: 7.5rem">
+          <canvas #chartCanvas></canvas>
+          <div
+            class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none"
+          >
+            <span class="text-xl font-bold text-slate-900 leading-none">{{
+              data().totalQualified
+            }}</span>
+            <span class="text-[9px] text-slate-400 font-medium mt-0.5">rooms</span>
+          </div>
+        </div>
+        <!-- Legend -->
+        <div class="flex flex-col gap-2.5 flex-1 min-w-0">
+          @for (segment of data().segments; track segment.rangeName) {
+            <div class="flex items-center gap-2 text-sm">
+              <span
+                class="w-2.5 h-2.5 rounded-full shrink-0"
+                [style.background-color]="segment.color"
+              ></span>
+              <span class="text-slate-600 truncate font-medium text-[13px]">{{
+                segment.rangeName
+              }}</span>
+              <span class="text-slate-900 font-bold ml-auto">{{ segment.count }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    } @else {
+      <div class="flex flex-col items-center justify-center w-full text-slate-400 gap-2 py-6">
+        <mat-icon class="text-4xl! h-10! w-10! opacity-30">pie_chart</mat-icon>
+        <p class="text-xs m-0 font-medium">No rooms currently match any range</p>
+      </div>
+    }
+  </div>
+
+  <!-- Footer -->
+  <div class="flex items-center justify-between px-5 py-3 border-t border-slate-100 bg-slate-50/50">
+    <span class="text-xs text-slate-400 font-medium"
+      >{{ data().totalQualified }} rooms · <span class="text-green-500">Live</span></span
+    >
+    <button
+      class="text-xs text-blue-500 font-semibold flex items-center gap-0.5 hover:text-blue-700 transition-colors cursor-pointer bg-transparent border-0 p-0"
+      (click)="onOpenList()"
+      [disabled]="!hasData()"
+    >
+      List View
+      <mat-icon class="text-sm! w-3.5! h-3.5!">chevron_right</mat-icon>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+{
+  "description": "Simulates real-time WebSocket updates. The developer must implement an interval that fires every 2 seconds and emits events matching the payloads below.",
+
+  "intervalMs": 2000,
+
+  "events": {
+    "sensor_update": {
+      "description": "Fired when a sensor reading changes in a room. Update the matching room sensor value and recompute all affected chart counts.",
+      "samplePayload": {
+        "roomId": "r-203",
+        "sensorType": "temperature",
+        "value": 27.1,
+        "unit": "°C",
+        "timestamp": "2026-03-03T10:45:02.000Z"
+      }
+    },
+    "room_status": {
+      "description": "Fired when a room goes online or offline. Offline rooms must be excluded from all chart counts immediately.",
+      "samplePayload": {
+        "roomId": "r-104",
+        "status": "online",
+        "timestamp": "2026-03-03T10:45:04.000Z"
+      }
+    }
+  },
+
+  "rules": [
+    "Only online rooms with a valid sensor reading are counted in charts.",
+    "When a sensor_update is received, recount all charts that include the affected room.",
+    "When a room_status changes, recount all charts that include that room.",
+    "Chart counts must reflect the latest state — recount from scratch on every update.",
+    "The interval must start on component init and be cleared on component destroy."
+  ]
+}
