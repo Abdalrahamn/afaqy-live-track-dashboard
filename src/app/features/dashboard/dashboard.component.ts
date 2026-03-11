@@ -113,6 +113,7 @@ export class DashboardComponent {
   openAddDialog(): void {
     const ref = this.dialog.open(ChartDialogComponent, {
       width: DIALOG_WIDTHS.STANDARD,
+      maxWidth: '95vw',
       height: DIALOG_HEIGHTS.ADD_EDIT,
       disableClose: true,
       data: {} as ChartDialogData,
@@ -134,6 +135,7 @@ export class DashboardComponent {
 
     const ref = this.dialog.open(ChartDialogComponent, {
       width: DIALOG_WIDTHS.STANDARD,
+      maxWidth: '95vw',
       height: DIALOG_HEIGHTS.ADD_EDIT,
       disableClose: true,
       data: { chart } as ChartDialogData,

@@ -20,6 +20,7 @@ import {
   CustomChart,
   ChartRange,
   SensorType,
+  Room,
   ChartDialogData,
   ChartDialogResult,
 } from '@core/models';
@@ -74,8 +75,19 @@ export class ChartDialogComponent {
     { initialValue: this.dialogData.chart?.roomIds ?? [] },
   );
 
+  /** Full Room objects for the currently selected room IDs */
+  readonly selectedRooms = computed<Room[]>(() =>
+    this.selectedRoomIds()
+      .map((id) => this.selectableRooms.find((r) => r.id === id))
+      .filter((r): r is Room => r !== undefined),
+  );
+
   readonly availableSensorTypes = computed<SensorType[]>(() => {
-    return this.dashboardService.commonSensorTypes(this.selectedRoomIds());
+    const selectedRooms = this.selectedRoomIds();
+    if (selectedRooms.length === 0) {
+      return this.dashboardService.availableSensorTypes();
+    }
+    return this.dashboardService.commonSensorTypes(selectedRooms);
   });
 
   /** Reset sensor type whenever it is no longer valid for the current room selection */
@@ -97,6 +109,13 @@ export class ChartDialogComponent {
     if (this.rangesArray.length > 1) {
       this.rangesArray.removeAt(index);
     }
+  }
+
+  removeRoom(roomId: string, event: MouseEvent): void {
+    event.stopPropagation();
+    const current = (this.form.get('roomIds')!.value as string[]) ?? [];
+    this.form.get('roomIds')!.setValue(current.filter((id) => id !== roomId));
+    this.form.get('roomIds')!.markAsTouched();
   }
 
   private createRangeGroup(range?: ChartRange): FormGroup {

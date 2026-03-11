@@ -6,16 +6,10 @@ export interface CsvColumn<T> {
 /**
  * Exports an array of objects to a CSV file and triggers a download.
  */
-export function exportToCsv<T>(
-  filename: string,
-  rows: T[],
-  columns: CsvColumn<T>[],
-): void {
+export function exportToCsv<T>(filename: string, rows: T[], columns: CsvColumn<T>[]): void {
   const header = columns.map((c) => escapeCsvField(c.header)).join(',');
   const body = rows
-    .map((row) =>
-      columns.map((c) => escapeCsvField(String(c.accessor(row)))).join(','),
-    )
+    .map((row) => columns.map((c) => escapeCsvField(String(c.accessor(row)))).join(','))
     .join('\n');
 
   const csv = `${header}\n${body}`;
