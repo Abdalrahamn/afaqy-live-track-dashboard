@@ -9,18 +9,12 @@ import {
   SensorType,
   RoomStatus,
   SocketEventType,
+  MockData,
 } from '@core/models';
 import { StorageService } from '../storage/storage.service';
 import { SocketService } from '../socket/socket.service';
 
-import mockData from '../../../../assets/data/mock-data.json';
-
-interface MockData {
-  rooms: Room[];
-  customCharts: CustomChart[];
-  chartOrder: string[];
-  sensorBounds: SensorBoundsMap;
-}
+import mockData from '@assets/data/mock-data.json';
 
 /**
  * Central application state backed by Angular Signals.

@@ -23,7 +23,6 @@ Chart.register(DoughnutController, ArcElement, Tooltip, Legend);
   selector: 'app-chart-card',
   imports: [TitleCasePipe, MatIconModule, MatButtonModule, MatMenuModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { class: 'block' },
   templateUrl: './chart-card.component.html',
   styleUrl: './chart-card.component.scss',
 })

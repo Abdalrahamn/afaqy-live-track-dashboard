@@ -20,6 +20,7 @@ export default defineConfig(({ mode }) => ({
         replacement: resolve(__dirname, 'src/app/shared/components/$1'),
       },
       { find: /^@features\/(.+)$/, replacement: resolve(__dirname, 'src/app/features/$1') },
+      { find: /^@assets\/(.+)$/, replacement: resolve(__dirname, 'src/assets/$1') },
     ],
     mainFields: ['module'],
   },

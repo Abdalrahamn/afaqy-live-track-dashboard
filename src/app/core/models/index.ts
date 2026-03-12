@@ -12,3 +12,4 @@ export type {
   RoomDetailDialogData,
   DeleteConfirmDialogData,
 } from './dialog-data.model';
+export type { MockData } from './mock-data.model';

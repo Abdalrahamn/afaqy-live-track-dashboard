@@ -5,7 +5,11 @@
     <strong class="text-slate-900 font-bold">{{ data.chartName }}</strong
     >?
   </p>
-  <p class="warning-notice">This action cannot be undone.</p>
+  <p
+    class="text-red-600 text-[0.8125rem] font-semibold px-3.5 py-2.5 bg-red-50 rounded mt-3 border border-red-500/10"
+  >
+    This action cannot be undone.
+  </p>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button (click)="dialogRef.close(false)">Cancel</button>

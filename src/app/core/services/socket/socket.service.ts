@@ -1,5 +1,5 @@
-import { Injectable, OnDestroy, signal } from '@angular/core';
-import { Observable, Subject, interval, takeUntil } from 'rxjs';
+import { DestroyRef, inject, Injectable, signal } from '@angular/core';
+import { Observable, Subject, Subscription, interval } from 'rxjs';
 import {
   Room,
   SensorBoundsMap,
@@ -19,9 +19,10 @@ import { SOCKET_TICK_MS } from '@core/constants';
  *  - occasionally a room_status toggle
  */
 @Injectable({ providedIn: 'root' })
-export class SocketService implements OnDestroy {
-  private readonly destroy$ = new Subject<void>();
+export class SocketService {
+  private readonly destroyRef = inject(DestroyRef);
   private readonly events$ = new Subject<SocketEvent>();
+  private tickSub: Subscription | null = null;
 
   /** Expose as observable so consumers can pipe / subscribe */
   readonly socketEvents$: Observable<SocketEvent> = this.events$.asObservable();
@@ -36,24 +37,20 @@ export class SocketService implements OnDestroy {
    * Starts the simulation loop.
    * Must be called after mock data is loaded so rooms & bounds are available.
    */
+  private readonly _cleanup = this.destroyRef.onDestroy(() => this.stop());
+
   start(rooms: Room[], sensorBounds: SensorBoundsMap): void {
     this.rooms = rooms;
     this.sensorBounds = sensorBounds;
     this.connected.set(true);
 
-    interval(SOCKET_TICK_MS)
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(() => this.tick());
+    this.tickSub = interval(SOCKET_TICK_MS).subscribe(() => this.tick());
   }
 
   stop(): void {
-    this.destroy$.next();
+    this.tickSub?.unsubscribe();
+    this.tickSub = null;
     this.connected.set(false);
-  }
-
-  ngOnDestroy(): void {
-    this.stop();
-    this.destroy$.complete();
   }
 
   /** Update the room reference when rooms change externally */
