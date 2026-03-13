@@ -7,7 +7,7 @@
           class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-slate-100 text-slate-400 transition-colors cursor-pointer border-0 bg-transparent mt-0.5"
           (click)="close()"
         >
-          <mat-icon class="text-xl!">arrow_back</mat-icon>
+          <mat-icon class="text-xl">arrow_back</mat-icon>
         </button>
         <div>
           <h2 class="text-lg font-bold text-slate-900 m-0">{{ c.name }} — List View</h2>
@@ -26,14 +26,14 @@
           (click)="exportCsv()"
           [disabled]="rows().length === 0"
         >
-          <mat-icon class="text-base! w-4! h-4!">download</mat-icon>
+          <mat-icon class="text-base w-4 h-4">download</mat-icon>
           Export
         </button>
         <button
           class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-slate-100 text-slate-400 transition-colors cursor-pointer border-0 bg-transparent"
           (click)="close()"
         >
-          <mat-icon class="text-lg!">close</mat-icon>
+          <mat-icon class="text-lg">close</mat-icon>
         </button>
       </div>
     </div>
@@ -42,7 +42,7 @@
     <div class="px-6 pb-4 flex items-center gap-3">
       <div class="flex-1 relative">
         <mat-icon
-          class="absolute! left-3 top-1/2 -translate-y-1/2 text-slate-400! text-lg! w-4.5! h-4.5!"
+          class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg w-4.5 h-4.5"
           >search</mat-icon
         >
         <input
@@ -59,7 +59,7 @@
     <div class="flex-1 overflow-y-auto px-6">
       @if (filteredRows().length === 0) {
         <div class="flex flex-col items-center justify-center p-12 text-slate-400 gap-4">
-          <mat-icon class="text-[3.25rem]! h-13! w-13! opacity-30">info</mat-icon>
+          <mat-icon class="text-[3.25rem] h-13 w-13 opacity-30">info</mat-icon>
           <p class="text-sm font-medium m-0">No rooms match your search.</p>
         </div>
       } @else {
@@ -104,7 +104,7 @@
               >
                 <td class="py-3.5 px-4">
                   <div class="flex items-center gap-2.5">
-                    <mat-icon class="text-slate-400! text-lg! w-4.5! h-4.5!">home</mat-icon>
+                    <mat-icon class="text-slate-400 text-lg w-4.5 h-4.5">home</mat-icon>
                     <span class="text-sm font-medium text-slate-900">{{ row.room.name }}</span>
                   </div>
                 </td>

@@ -1,5 +1,5 @@
 <h2 mat-dialog-title class="flex items-center">
-  <mat-icon class="align-middle mr-2 text-indigo-500! text-2xl! h-6! w-6!">meeting_room</mat-icon>
+  <mat-icon class="align-middle mr-2 text-indigo-500 text-2xl h-6 w-6">meeting_room</mat-icon>
   {{ data.room.name }}
 </h2>
 
@@ -23,8 +23,8 @@
       <mat-chip
         [class]="
           data.room.status === RoomStatus.Online
-            ? 'bg-green-500! text-white! text-xs!'
-            : 'bg-slate-400! text-white! text-xs!'
+            ? 'bg-green-500 text-white text-xs'
+            : 'bg-slate-400 text-white text-xs'
         "
       >
         {{ data.room.status | titlecase }}
@@ -76,7 +76,7 @@
         >Range Assignment</span
       >
       @if (data.range) {
-        <mat-chip [style.background-color]="data.range.color" class="text-white! font-semibold!">
+        <mat-chip [style.background-color]="data.range.color" class="text-white font-semibold">
           {{ data.range.name }}
         </mat-chip>
       } @else {
